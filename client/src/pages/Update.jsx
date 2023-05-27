@@ -9,7 +9,7 @@ const Update = () => {
     price: null,
     cover: "",
   });
-  const [error,setError] = useState(false)
+  const [error, setError] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const Update = () => {
     e.preventDefault();
 
     try {
-      await axios.put(`http://localhost:8800/books/${bookId}`, book);
+      await axios.put(`http://localhost:8800/api/books/${bookId}`, book);
       navigate("/");
     } catch (err) {
       console.log(err);
