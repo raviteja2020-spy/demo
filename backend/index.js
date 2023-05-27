@@ -13,11 +13,11 @@ const db = mysql.createConnection({
   database: "test",
 });
 
-app.get("/api/hello", (req, res) => {
+app.get("/", (req, res) => {
   res.json("hello");
 });
 
-app.get("/api/books", (req, res) => {
+app.get("/books", (req, res) => {
   const q = "SELECT * FROM books";
   db.query(q, (err, data) => {
     if (err) {
@@ -28,7 +28,7 @@ app.get("/api/books", (req, res) => {
   });
 });
 
-app.post("/api/books", (req, res) => {
+app.post("/books", (req, res) => {
   const q = "INSERT INTO books(`title`, `desc`, `price`, `cover`) VALUES (?)";
 
   const values = [
@@ -44,7 +44,7 @@ app.post("/api/books", (req, res) => {
   });
 });
 
-app.delete("/api/books/:id", (req, res) => {
+app.delete("/books/:id", (req, res) => {
   const bookId = req.params.id;
   const q = " DELETE FROM books WHERE id = ? ";
 
@@ -54,7 +54,7 @@ app.delete("/api/books/:id", (req, res) => {
   });
 });
 
-app.put("/api/books/:id", (req, res) => {
+app.put("/books/:id", (req, res) => {
   const bookId = req.params.id;
   const q =
     "UPDATE books SET `title`= ?, `desc`= ?, `price`= ?, `cover`= ? WHERE id = ?";
